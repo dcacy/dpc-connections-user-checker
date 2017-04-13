@@ -1,0 +1,23 @@
+{
+  "name": "connections-user-checker",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cfenv": "1.0.x",
+    "date-arithmetic": "^3.1.0",
+    "express": "4.13.x",
+    "promise": "^7.1.1",
+    "properties-reader": "0.0.15",
+    "string": "^3.3.1",
+    "url": "^0.11.0",
+    "xml2js": "^0.4.17"
+  },
+  "repository": {},
+  "engines": {
+    "node": "4.x"
+  }
+}
