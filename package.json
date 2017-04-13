@@ -1,5 +1,5 @@
 {
-  "name": "connections-user-checker",
+  "name": "dpc-connections-user-checker",
   "version": "0.0.1",
   "private": true,
   "scripts": {
