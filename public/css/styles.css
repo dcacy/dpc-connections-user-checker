@@ -45,6 +45,10 @@
 	top:1px;
 }
 
+#loadingDiv,
+#mgrsTableWrapper {
+	margin: auto;
+}
 * {
 	font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 300;
@@ -55,4 +59,12 @@ td.details-control {
 }
 tr.shown td.details-control {
     background: url('../images/details_close.png') no-repeat center center;
+}
+
+
+/* masking */
+.loadmask-msg div {
+	height:100px;
+	width:100px;
+   background: #fbfbfb url('../images/watson.gif') no-repeat 5px 5px;
 }

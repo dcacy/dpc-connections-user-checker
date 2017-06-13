@@ -1,42 +1,3 @@
-/**
- *
- *********************** IBM COPYRIGHT START  *********************************
-// @copyright(disclaimer)
-//
-// Licensed Materials - Property of IBM
-// 5724-L31
-// (C) Copyright IBM Corp. 2017. All Rights Reserved.
-//
-// US Government Users Restricted Rights
-// Use, duplication or disclosure restricted by GSA ADP Schedule
-// Contract with IBM Corp.
-//
-// DISCLAIMER OF WARRANTIES :
-//
-// Permission is granted to copy and modify this Sample code, and to
-// distribute modified versions provided that both the copyright
-// notice, and this permission notice and warranty disclaimer appear
-// in all copies and modified versions.
-//
-// THIS SAMPLE CODE IS LICENSED TO YOU "AS-IS".
-// IBM  AND ITS SUPPLIERS AND LICENSORS  DISCLAIM
-// ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, IN SUCH SAMPLE CODE,
-// INCLUDING THE WARRANTY OF NON-INFRINGEMENT AND THE IMPLIED WARRANTIES
-// OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT
-// WILL IBM OR ITS LICENSORS OR SUPPLIERS BE LIABLE FOR ANY DAMAGES ARISING
-// OUT OF THE USE OF  OR INABILITY TO USE THE SAMPLE CODE, DISTRIBUTION OF
-// THE SAMPLE CODE, OR COMBINATION OF THE SAMPLE CODE WITH ANY OTHER CODE.
-// IN NO EVENT SHALL IBM OR ITS LICENSORS AND SUPPLIERS BE LIABLE FOR ANY
-// LOST REVENUE, LOST PROFITS OR DATA, OR FOR DIRECT, INDIRECT, SPECIAL,
-// CONSEQUENTIAL,INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS
-// OF THE THEORY OF LIABILITY, EVEN IF IBM OR ITS LICENSORS OR SUPPLIERS
-// HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
-//
-// @endCopyright
-//*********************** IBM COPYRIGHT END  ***********************************
- *
- */
-
 var openRows = [];
 
 function getMgrsData() {
@@ -49,7 +10,8 @@ function getMgrsData() {
     success: function (data, status, jq) {
       var table = $('#mgrsTable').DataTable( {
         data: data,
-        responsive: true,
+//        responsive: true,
+        autoWidth: false,
         "columns": [
             {
                 "className": 'details-control',
@@ -62,7 +24,11 @@ function getMgrsData() {
         "columnDefs" : [
           { "title": "Name", "targets": 1 },
           { "title": "Email", "targets": 2 },
-          { "title": "Nbr of Employees", "targets": 3 }
+          { "title": "Nbr of Employees", "targets": 3 },
+          { "width": "10%", "targets": 0 },
+          { "width": "40%", "targets": 1 },
+          { "width": "40%", "targets": 2 },
+          { "width": "10%", "targets": 3 }
         ]
       });
 
@@ -123,7 +89,7 @@ function closeOpenedRows(table, selectedRow) {
 function showDetails(manager, callback) {
   var html = '';
   if ( manager.peopleManaged ) {
-    $('#loadingDiv').mask('Please Wait...<br/><img src="/images/watson.gif">');
+    $('#mgrsTableWrapper').mask('Please Wait');
     $.ajax({
       type: "POST",
       url: "/getUserActivity",
@@ -150,12 +116,13 @@ function showDetails(manager, callback) {
           }
         }
         html += '</table>';
-        $('#loadingDiv').unmask();
+        $('#mgrsTableWrapper').unmask();
         callback(html);
       },
       error: function(jq, status, error) {
         console.log('error! ', error, jq);
         alert(jq.responseText);
+        $('#mgrsTableWrapper').unmask();
       }
     });
   } else {
