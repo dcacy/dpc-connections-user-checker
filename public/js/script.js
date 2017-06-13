@@ -1,6 +1,12 @@
 var openRows = [];
 
 function getMgrsData() {
+
+	// delete the table if it already exists; the user must have clicked the button again
+	if ( $.fn.dataTable.isDataTable( '#mgrsTable' ) ) {
+    $('#mgrsTable').DataTable().destroy();
+    $('#mgrsTable').html('');
+	}
   $('#loadingDiv').mask('Please Wait...<br/><img src="/images/watson.gif">');
   $.ajax({
     type: "GET",
@@ -10,12 +16,11 @@ function getMgrsData() {
     success: function (data, status, jq) {
       var table = $('#mgrsTable').DataTable( {
         data: data,
-//        responsive: true,
         autoWidth: false,
         "columns": [
             {
-                "className": 'details-control',
-                "defaultContent": ''
+              "className": 'details-control',
+              "defaultContent": ''
             },
             { "data": "name" },
             { "data": "email" },
