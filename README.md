@@ -13,6 +13,10 @@ see [here](https://ibm.biz/Bdiudg); for Connections Cloud, see [here](https://ib
 
 1. Edit `connections.properties`, providing the correct Connections host name, as well as an ID and password.
 
+1. Download `jquery.loadmask.min.js` from [https://github.com/wallynm/jquery-loadmask](https://github.com/wallynm/jquery-loadmask) and copy it to the `public/js` directory.
+
+1. Download `jquery.loadmask.css` from [https://github.com/wallynm/jquery-loadmask](https://github.com/wallynm/jquery-loadmask) and copy it to the `public/css` directory.
+
 1. Install dependencies:
 ```
 npm install
