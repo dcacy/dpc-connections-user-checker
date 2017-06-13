@@ -4,7 +4,7 @@ This utility allows you to get a list of all the managers in your organization, 
 their direct reports and the most recent updates of those direct reports. This application works 
 on both Connections on premises and Connections Cloud.
 
-## Getting Started 
+## Getting Started
 
 1. Your Connections environment must have managers designated in their Profiles. For on premises Connections,
 see [here](https://ibm.biz/Bdiudg); for Connections Cloud, see [here](https://ibm.biz/Bdiuxd).
